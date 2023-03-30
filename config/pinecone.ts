@@ -6,8 +6,8 @@ if (!process.env.PINECONE_INDEX_NAME) {
   throw new Error('Missing Pinecone index name in .env file');
 }
 
-const PINECONE_INDEX_NAME = process.env.PINECONE_INDEX_NAME ?? '';
+const PINECONE_INDEX_NAME = process.env.PINECONE_INDEX_NAME ?? 'ai-docs-test';
 
-const PINECONE_NAME_SPACE = 'pdf-test'; //namespace is optional for your vectors
+const PINECONE_NAME_SPACE = 'icu_demo_01';
 
 export { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE };

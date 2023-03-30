@@ -7,7 +7,7 @@ import { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } from '@/config/pinecone';
 import { DirectoryLoader } from 'langchain/document_loaders';
 
 /* Name of directory to retrieve your files from */
-const filePath = 'docs';
+const filePath = 'docs_new';
 
 export const run = async () => {
   try {
@@ -25,9 +25,12 @@ export const run = async () => {
       chunkOverlap: 200,
     });
 
-    const docs = await textSplitter.splitDocuments(rawDocs);
-    console.log('split docs', docs);
-
+    // send first 10 documents to be split
+    const o_docs = await textSplitter.splitDocuments(rawDocs);
+    console.log('o_docs', o_docs.length);
+    const docs = o_docs.slice(300, 364);
+    // 364
+    // console.log(docs);
     console.log('creating vector store...');
     /*create and store the embeddings in the vectorStore*/
     const embeddings = new OpenAIEmbeddings();
